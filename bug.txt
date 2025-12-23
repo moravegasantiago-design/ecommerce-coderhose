@@ -1,0 +1,236 @@
+-duplicado de productos: cuando agrego o filtro una categoria si se 
+los productos si le undo varias veces en la mismas categorias;
+
+- precion min max: se agregan al filtrado independientemente;
+
+- [x]filtros repetidos :se agregan en la pantalla varios flitros;
+
+- [x]bug al eliminar el filtro solo reinicia los productos cuando se quitan todos;
+
+- [x]bug se duplica muy rara vez el filtro cuando se agrega no es duplidado en el array en el array aparece uno solo
+pero en el DOM hay 2
+- borrar todo lo que tenga que ver con el friltro para que sea algo avanzado y de buen calibre
+
+- bug cuando eligo varios de la misma opcion de menu quito el el filtro y no se restablese;
+🔴 - HACER MAÑANA 
+===============================================
+
+[ ] BUGS: SOLUCIONAR BUG DEL FILTRADO DOBLE, Y EL QUITADO DE FILTROS;
+[ ] BUSCADOR: EMPEZAR CON EL BUSCADOR;
+
+===============================================
+   DULCE KIDS - BUGS Y TAREAS PENDIENTES
+===============================================
+
+📅 FECHA: Noviembre 2025
+
+
+🔴 CRÍTICO - HACER YA
+===============================================
+
+[ ] SEGURIDAD: Regenerar credenciales Firebase expuestas en firebase-config.js
+[ ] SEGURIDAD: Configurar reglas Firestore (Rules en Firebase Console)
+[ ] SEGURIDAD: Crear archivo .env y mover credenciales ahí
+[ ] SEGURIDAD: Agregar .env al .gitignore
+
+[ ] BUG: Carruseles duplicados (carousel.js y featured-slider.js se pelean)
+    → Decidir cuál usar y eliminar el otro
+
+[ ] BUG: featured-slider.js tiene DOS implementaciones del carrusel
+    → Líneas 1-60 duplican la clase FeaturedSlider
+    → Eliminar primera implementación
+
+
+🟠 IMPORTANTE - Esta Semana
+===============================================
+
+[ ] Agregar try/catch a TODAS las funciones async:
+    - traerProductos() en utils.js
+    - eleccionFiltro() en nav.js
+    - Cualquier llamada a Firebase
+
+[ ] Validar elementos DOM antes de usarlos:
+    if (!elemento) return;
+
+[ ] Agregar estados de carga (spinners/loaders):
+    - Cuando carga productos
+    - Cuando aplica filtros
+    - Cuando hace búsqueda
+
+[ ] Mensajes al usuario:
+    - "Cargando productos..."
+    - "No se encontraron productos"
+    - "Error al cargar, intenta de nuevo"
+
+[ ] BUG: Validación de precios confusa en nav.js línea 50-70
+    → Simplificar lógica de if/else
+
+[ ] BUG: eliminarFiltro() no necesita ser async (nav.js línea 33)
+
+
+🟡 MEJORAR - Próximos Días
+===============================================
+
+[ ] LIMPIEZA: Eliminar código comentado:
+    - menuMovil.js líneas 26-36 (función array comentada)
+    - nav.js tiene varios comentarios
+
+[ ] LIMPIEZA: Quitar console.logs:
+    - nav.js línea 8, 53, 82, 112
+    - featured-slider.js línea 362
+
+[ ] NOMBRES: Mejorar variables confusas:
+    - "aggFiltros" → "agregarFiltros"
+    - "filtrosActive" → "filtrosActivos"
+    - "quitMenu" → "cerrarMenu"
+
+[ ] CONSISTENCIA: Espaciado en if:
+    - Algunas veces: if(input)
+    - Otras veces: if (input)
+    → Decidir un estilo y usarlo siempre
+
+
+🟢 FUNCIONALIDADES FALTANTES
+===============================================
+
+[ ] Carrito de compras (si es ecommerce completo)
+[ ] Integración de pagos (Stripe, PayPal, etc)
+[ ] Panel de administración para el dueño
+[ ] Sistema de autenticación de usuarios
+[ ] Búsqueda de productos (parece que existe search.js pero no lo vi implementado)
+[ ] Paginación en productos (si hay muchos)
+[ ] Favoritos/Wishlist
+[ ] Filtro por precio con slider visual
+[ ] Zoom en imágenes de productos
+
+
+📱 TESTING PENDIENTE
+===============================================
+
+[ ] Probar en Chrome, Firefox, Safari
+[ ] Probar en móvil real (Android e iOS)
+[ ] Probar con internet lento (Chrome DevTools → Network → Slow 3G)
+[ ] Probar sin internet (¿qué pasa?)
+[ ] Probar con 0 productos en BD
+[ ] Probar con 1000+ productos (rendimiento)
+[ ] Probar todos los filtros combinados
+[ ] Probar búsqueda con caracteres especiales
+
+
+🎨 MEJORAS DE UX/UI
+===============================================
+
+[ ] Loading skeleton mientras cargan productos
+[ ] Animación suave al aplicar filtros
+[ ] Mostrar cantidad de productos encontrados
+[ ] Breadcrumbs de navegación
+[ ] Mensaje cuando carrito está vacío
+[ ] Confirmación antes de eliminar filtros
+[ ] Auto-scroll al aplicar filtros
+[ ] Imágenes con lazy loading
+
+
+⚡ OPTIMIZACIÓN DE RENDIMIENTO
+===============================================
+
+[ ] Limitar queries de Firebase (no traer TODO)
+[ ] Implementar paginación (10-20 productos por página)
+[ ] Caché inteligente de productos
+[ ] Comprimir imágenes (optimizar peso)
+[ ] Minificar JS y CSS para producción
+[ ] Lazy loading de imágenes
+[ ] Debounce en búsqueda (esperar 300ms antes de buscar)
+
+
+📝 DOCUMENTACIÓN
+===============================================
+
+[ ] README.md con instrucciones de instalación
+[ ] Comentar funciones complejas
+[ ] Documentar estructura de datos de Firebase
+[ ] Manual de usuario para el cliente
+[ ] Guía de despliegue
+
+
+🚀 ANTES DE ENTREGAR AL CLIENTE
+===============================================
+
+[ ] Verificar que NO haya console.logs
+[ ] Verificar que NO haya código comentado
+[ ] Verificar que .env NO esté en el repositorio
+[ ] Probar TODA la funcionalidad de punta a punta
+[ ] Verificar en móvil y desktop
+[ ] Verificar que todos los links funcionen
+[ ] Verificar que todas las imágenes carguen
+[ ] Backup de la base de datos
+[ ] Tener plan de rollback si algo falla
+
+
+💰 FUNCIONALIDADES OPCIONALES (Cobrar Extra)
+===============================================
+
+[ ] Pasarela de pagos integrada (+$300-500)
+[ ] Panel admin completo (+$400-600)
+[ ] Sistema de cupones/descuentos (+$200-300)
+[ ] Email marketing integrado (+$300)
+[ ] Analytics y reportes (+$200-300)
+[ ] Chat en vivo (+$150-200)
+[ ] SEO avanzado (+$300-400)
+[ ] Multi-idioma (+$400)
+
+
+📞 PREGUNTAS PARA EL CLIENTE
+===============================================
+
+[ ] ¿Necesitan pasarela de pagos o solo mostrar productos?
+[ ] ¿Quién va a subir los productos? (¿necesitan panel admin?)
+[ ] ¿Cuántos productos aproximadamente tendrán?
+[ ] ¿Necesitan sistema de usuarios/cuentas?
+[ ] ¿Envío a domicilio? ¿Cálculo de envío automático?
+[ ] ¿Integración con inventario físico?
+[ ] ¿Qué métodos de pago quieren aceptar?
+
+
+⏰ TIEMPO ESTIMADO
+===============================================
+
+MÍNIMO VIABLE:
+- Seguridad crítica: 1 día
+- Manejo de errores: 2-3 días
+- Testing básico: 1-2 días
+- Limpieza código: 1 día
+TOTAL: 5-7 días
+
+VERSIÓN PROFESIONAL:
+- Todo lo anterior: 5-7 días
+- Carrito y checkout: 3-4 días
+- Panel admin: 4-5 días
+- Testing completo: 2-3 días
+- Documentación: 1-2 días
+TOTAL: 15-21 días (3-4 semanas)
+
+
+💡 TIPS PERSONALES
+===============================================
+
+- Prioriza SEGURIDAD primero (si hackean la BD, perdiste todo)
+- Después ESTABILIDAD (que no crashee)
+- Luego FUNCIONALIDADES nuevas
+- Finalmente OPTIMIZACIÓN
+
+- Prueba TODO en móvil (70% de usuarios usan móvil)
+- Si algo puede fallar, va a fallar (Murphy's Law)
+- Siempre ten plan B si Firebase cae
+- Guarda backups de la BD antes de cambios grandes
+
+
+📊 PRIORIDAD DE TAREAS
+===============================================
+
+1. Seguridad Firebase (AHORA)
+2. Try/catch en funciones async (ESTA SEMANA)
+3. Estados de carga (ESTA SEMANA)
+4. Limpiar código (PRÓXIMA SEMANA)
+5. Testing completo (ANTES DE ENTREGAR)
+6. Funcionalidades extra (SI HAY TIEMPO/PRESUPUESTO)
+

@@ -1,0 +1,53 @@
+
+/* ========================================
+   ENCABEZADO DE BÚSQUEDA
+======================================== */
+.search-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+}
+
+.search-info {
+    flex: 1;
+}
+
+.search-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin: 0 0 0.5rem 0;
+}
+
+.search-count {
+    font-size: 0.95rem;
+    color: var(--text);
+    margin: 0;
+}
+
+.clear-search {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    background: transparent;
+    border: 1px solid #E5E5E5;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--dark);
+    transition: all 0.3s;
+    font-size: 0.9rem;
+}
+
+.clear-search:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+

@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DULCE KIDS - Moda infantil de calidad con los mejores precios">
+    <title>DULCE KIDS - Moda Infantil</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/nav-results.css">
+    <link rel="stylesheet" href="css/buscador.css">
+    <link rel="stylesheet" href="css/carrito-de-compras.css">
+    <link rel="stylesheet" href="css/contenedor-productos.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- ========== TOP BAR TICKER ========== -->
+<div class="top-bar">
+    <div class="top-bar-content">
+        <p>🎉 <strong>SUPER OFERTA:</strong> 30% OFF en toda la tienda + Envío gratis sobre $50</p>
+        <p>🎉 <strong>SUPER OFERTA:</strong> 30% OFF en toda la tienda + Envío gratis sobre $50</p>
+        <p>🎉 <strong>SUPER OFERTA:</strong> 30% OFF en toda la tienda + Envío gratis sobre $50</p>
+    </div>
+</div>
+<header class="header" id="menu">
+    <div class="header-container">
+        <div class="logo-wrapper">
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <a href="/" class="logo">
+                <img src="images/logo/logoDulceKids.png" alt="DULCE KIDS Logo" width="60" height="60">
+            </a>
+        </div>
+
+                <!-- DESKTOP SEARCH -->
+        <div class="search-bar">
+            <svg class="search-icon-left" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.35-4.35"></path>
+            </svg>
+            <form class= "form-input">
+                <input 
+                    type="search" 
+                    class="search-input" 
+                    id="searchInputDesktop"
+                    placeholder="Buscar productos, marcas..." 
+                    aria-label="Búsqueda"
+                    autocomplete="off"
+                >
+                <button type= "submit" class="search-btn">Buscar</button>
+            </form>
+            
+            <!-- SUGERENCIAS DESKTOP -->
+            <div class="search-suggestions" id="searchSuggestionsDesktop">
+                <div class="suggestions-header">
+                    <span class="suggestions-title">Sugerencias</span>
+                    <button class="suggestions-close" type="button">✕</button>
+                </div>
+                <div class="suggestions-list" id="suggestionsListDesktop">
+                    <!-- Las sugerencias se cargan aquí dinámicamente -->
+                     <div class="suggestion-item">
+                <div class="suggestion-icon">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                </div>
+                <div class="suggestion-content">
+                    <div class="suggestion-text"><span class="suggestion-highlight">Vestidos</span> elegantes</div>
+                    <div class="suggestion-category">Niñas</div>
+                </div>
+                <span class="suggestion-badge">12</span>
+            </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="header-actions">
+            <button class="header-icon search-mobile" id="searchMobile" aria-label="Búsqueda móvil">
+                <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+            </button>
+            
+            <button class="header-icon user" aria-label="Mi cuenta">
+                <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+            </button>
+            
+            <button class="header-icon" id="carrito" aria-label="Carrito de compras">
+                <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                <span class="icon-badge" style="display: none;">0</span>
+            </button>
+        </div>
+    </div>
+        
+    <!-- MOBILE SEARCH -->
+    <div class="mobile-search" id="searchSuggestionsMovil">
+        <div>
+            <input 
+                type="text" 
+                class="mobile-search-input" 
+                id="searchInputMobile"
+                placeholder="Buscar productos..." 
+                aria-label="Búsqueda móvil"
+                autocomplete="off"
+            >
+            <button class="mobile-search-close" aria-label="Cerrar búsqueda">✕</button>
+        </div>
+        
+        <!-- SUGERENCIAS MOBILE -->
+        <div class="search-suggestions mobile" id="searchSuggestionsMobile">
+            <div class="suggestions-list" id="suggestionsListMobile">
+                
+                <!-- Sugerencias aquí -->
+                
+            </div>
+            
+        </div>
+    </div>
+
+    <nav class="desktop-nav">
+        <ul class="desktop-nav-list">
+            <li><a href="#nuevo" class="desktop-nav-link nuevo">NUEVO</a></li>
+            <li class="has-submenu">
+                <a href="#ninas" class="desktop-nav-link ninas">NIÑAS</a>
+                <div class="submenu">
+                    <a href="#ninas-todo" class="todo-ninas">Ver Todo</a>
+                    <a href="#ninas-vestidos" class="vestido-ninas">Vestidos</a>
+                    <a href="#ninas-jeans" class="jeans-ninas"> Jeans / Pants</a>
+                    <a href="#ninas-camisetas" class="camisetas-ninas">Camisetas</a>
+                    <a href="#ninas-buzos" class="buzos-ninas">Buzos</a>
+                    <a href="#ninas-comfy" class="comfy-ninas">Comfy</a>
+                </div>
+            </li>
+            <li class="has-submenu">
+                <a href="#ninos" class="desktop-nav-link ninos">NIÑOS</a>
+                <div class="submenu">
+                    <a href="#ninos-todo" class="todo-ninos">Ver Todo</a>
+                    <a href="#ninos-camisetas" class="camisetas-ninos">Camisetas</a>
+                    <a href="#ninos-jeans" class="jeans-ninos">Jeans / Pants</a>
+                    <a href="#ninos-buzos"class="buzos-ninos">Buzos</a>
+                    <a href="#ninos-comfy" class="comfy-ninos">Comfy</a>
+                </div>
+            </li>
+            <li><a href="#vestidos" class="desktop-nav-link vestido-ninas">VESTIDOS</a></li>
+            <li><a href="#denim" class="desktop-nav-link denim">DENIM</a></li>
+            <li><a href="#comfy" class="desktop-nav-link comfy">COMFY</a></li>
+            <li><a href="#sets" class="desktop-nav-link sets">SETS</a></li>
+            <li><a href="#ofertas" class="desktop-nav-link rebaja">REBAJAS</a></li>
+        </ul>
+    </nav>
+</header>
+    
+            
+<!-- Menú Lateral Móvil -->
+<nav class="nav-menu" id="navMenu">
+    <div class="nav-header">
+        <a href="/" class="logo">
+            <img src="images/logo/logoDulceKids.png" alt="DULCE KIDS" width="50" height="50">
+        </a>
+        <button class="nav-close" id="navClose" aria-label="Cerrar menú">✕</button>
+    </div>
+    
+    <ul class="nav-list">
+        <li>
+            <a href="#nuevo" class="nav-link nuevo">
+                <span class="nav-icon-wrapper">
+                    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                        <path d="M2 17l10 5 10-5"></path>
+                        <path d="M2 12l10 5 10-5"></path>
+                    </svg>
+                </span>
+                <span class="nav-text">Nuevo</span>
+            </a>
+        </li>
+        <li class="nav-item-dropdown">
+            <a href="#ninas" class="nav-link ninas">
+                <span class="nav-icon-wrapper">
+                    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </span>
+                <span class="nav-text">Niñas</span>
+                <span class="dropdown-arrow" data-flecha="nina">▼</span>
+            </a>
+            <ul class="nav-submenu">
+                <li><a href="#ninas-todo" class="todo-ninas">Ver Todo</a></li>
+                <li><a href="#ninas-jeans" class="jeans-ninas">Jeans / Pants</a></li>
+                <li><a href="#ninas-camisetas" class="camisetas-ninas">Camisetas</a></li>
+                <li><a href="#ninas-buzos" class="buzos-ninas">Buzos</a></li>
+                <li><a href="#ninas-comfy" class="comfy-ninas">Comfy</a></li>
+            </ul>
+        </li>
+        <li class="nav-item-dropdown">
+            <a href="#ninos" class="nav-link ninos">
+                <span class="nav-icon-wrapper">
+                    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </span>
+                <span class="nav-text">Niños</span>
+                <span class="dropdown-arrow" data-flecha="nino">▼</span>
+            </a>
+            <ul class="nav-submenu">
+                <li><a href="#ninos-todo"class="todo-ninos">Ver Todo</a></li>
+                <li><a href="#ninos-camisetas"class="camisetas-ninos">Camisetas</a></li>
+                <li><a href="#ninos-jeans" class="jeans-ninos">Jeans / Pants</a></li>
+                <li><a href="#ninos-buzos" class="buzos-ninos">Buzos</a></li>
+                <li><a href="#ninos-comfy"class="comfy-ninos">Comfy</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#vestidos" class="nav-link vestido-ninas">
+                <span class="nav-icon-wrapper">
+                    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                    </svg>
+                </span>
+                <span class="nav-text">Vestidos</span>
+            </a>
+        </li>
+        <li>
+            <a href="#denim" class="nav-link denim">
+                <span class="nav-icon-wrapper">
+                    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                    </svg>
+                </span>
+                <span class="nav-text">Denim</span>
+            </a>
+        </li>
+        <li>
+            <a href="#comfy" class="nav-link comfy">
+                <span class="nav-icon-wrapper">
+                    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                    </svg>
+                </span>
+                <span class="nav-text">Comfy</span>
+            </a>
+        </li>
+        <li>
+            <a href="#sets" class="nav-link sets">
+                <span class="nav-icon-wrapper">
+                    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                    </svg>
+                </span>
+                <span class="nav-text">SETS</span>
+            </a>
+        </li>
+        <li>
+            <a href="#ofertas" class="nav-link rebaja">
+                <span class="nav-icon-wrapper">
+                    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                </span>
+                <span class="nav-text">Rebajas</span>
+            </a>
+        </li>
+        <li>
+            <a href="#contacto" class="nav-link contacto">
+                <span class="nav-icon-wrapper">
+                    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg>
+                </span>
+                <span class="nav-text">Contacto</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+<div class="nav-overlay" id="navOverlay"></div>
+<div class="product-drawer-overlay"></div>
+
+<aside class="product-drawer">
+    <!-- Header -->
+    <div class="product-drawer-header">
+        <h2 class="product-drawer-title">Detalles del producto</h2>
+        <button class="product-drawer-close" aria-label="Cerrar">×</button>
+    </div>
+
+    <!-- Content -->
+    <div class="product-drawer-content">
+        <!-- Imagen -->
+        <div class="product-drawer-image">
+    
+        </div>
+
+        <!-- Info básica -->
+        <div class="product-drawer-info">
+        </div>
+
+        <!-- Selector de color -->
+        <div class="product-drawer-option-group">
+            <label class="product-drawer-option-label">Selecciona el color</label>
+            <div class="product-drawer-color-grid" id="drawerColorOptions">
+
+            </div>
+        </div>
+
+        <!-- Selector de talla -->
+        <div class="product-drawer-option-group">
+            <label class="product-drawer-option-label">Selecciona la talla</label>
+            <div class="product-drawer-size-grid" id="drawerSizeOptions">
+        </div>
+
+        <!-- Cantidad -->
+        <div class="product-drawer-option-group">
+            <label class="product-drawer-option-label">Cantidad</label>
+            <div class="product-drawer-quantity">
+                <button class="quantity-btn" id="drawerDecreaseQty">−</button>
+                <input type="number" class="quantity-input" id="drawerQuantity" value="1" min= "1" readonly>
+                <button class="quantity-btn" id="drawerIncreaseQty">+</button>
+            </div>
+        </div>
+
+        <!-- Botón añadir al carrito -->
+        <button class="product-drawer-add-cart" id="drawerAddToCart">
+            Añadir al carrito
+        </button>
+
+        <!-- Productos relacionados -->
+        <div class="product-drawer-related">
+            <h3 class="product-drawer-related-title">Te podría gustar</h3>
+            <div class="product-drawer-related-grid" id="drawerRelatedProducts">
+                
+            </div>
+        </div>
+    </div>
+</aside>
+<!-- LOADING OVERLAY PROFESIONAL -->
+<div class="loading-overlay-dulce">
+    <div class="loading-content-dulce">
+        <div class="spinner-dulce"></div>
+        <p class="loading-text-dulce">Buscando productos...</p>
+    </div>
+</div>
+<!-- Overlay para cerrar el carrito al hacer clic fuera -->
+<div class="cart-overlay" id="cartOverlay"></div>
+    
+<!-- Panel del carrito -->
+<div class="cart-panel" id="cartPanel">
+    <!-- Header del carrito -->
+    <div class="cart-header">
+        <div class="cart-title">
+            <svg class="cart-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="9" cy="21" r="1"></circle>
+                <circle cx="20" cy="21" r="1"></circle>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+            <h2>Bolsa de Compras</h2>
+        </div>
+        <button class="cart-close" id="closeCart">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Contenido del carrito -->
+    <div class="cart-content">
+        
+        <!-- Los productos se agregan aquí con JavaScript -->
+    </div>
+
+    <!-- Footer del carrito -->
+    <div class="cart-footer">
+        <!-- Barra de progreso de envío gratis -->
+        <div class="shipping-progress-container">
+            <div class="shipping-info">
+                <svg class="truck-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="1" y="3" width="15" height="13"></rect>
+                    <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                    <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                    <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                </svg>
+                <span class="shipping-text" id="shippingText">Te faltan $500.000 para envío gratis</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width: 0%;"></div>
+            </div>
+        </div>
+
+        <!-- Resumen de costos -->
+        <div class="cart-summary">
+            <div class="summary-row">
+                <span>Subtotal</span>
+                <span class="amount" id="subtotalAmount"></span>
+            </div>
+            <div class="summary-row" id="shippingRow">
+                <span>Envío</span>
+                <span class="amount" id="shippingAmount"></span>
+            </div>
+            <div class="summary-row total">
+                <span>Total</span>
+                <span class="amount" id="totalAmount"></span>
+            </div>
+        </div>
+
+        <!-- Cupón de descuento -->
+        <div class="discount-section">
+            <input type="text" class="discount-input" placeholder="Aplicar cupón de descuento">
+        </div>
+
+        <!-- Botón checkout -->
+        <button class="checkout-btn">
+            IR AL CHECKOUT
+        </button>
+    </div>
+</div>
+<!-- ========== MAIN CONTENT ========== -->
+<main class="content oculto"></main>
+<main class="contenido-home active">
+    <!-- Banner Carrusel -->
+    <section class="hero-carousel" aria-label="Carrusel de ofertas">
+        <div class="carousel-track" id="carouselTrack">
+            <div class="carousel-slide">
+                <img src="https://images.unsplash.com/photo-1503944583220-79d8926ad5e2?w=1200&h=700&fit=crop" alt="Nueva Colección 2025" loading="eager">
+                <div class="carousel-content">
+                    <h2>Nueva Colección 2025</h2>
+                    <p>Estilo y comodidad para tus pequeños</p>
+                    <button class="carousel-cta">Ver Colección</button>
+                </div>
+            </div>
+            
+            <div class="carousel-slide">
+                <img src="https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?w=1200&h=700&fit=crop" alt="Vestidos Elegantes" loading="lazy">
+                <div class="carousel-content">
+                    <h2>Vestidos Elegantes</h2>
+                    <p>Para ocasiones especiales</p>
+                    <button class="carousel-cta">Ver Vestidos</button>
+                </div>
+            </div>
+            
+            <div class="carousel-slide">
+                <img src="https://images.unsplash.com/photo-1596783074918-c84cb06531ca?w=1200&h=700&fit=crop" alt="Ropa Casual" loading="lazy">
+                <div class="carousel-content">
+                    <h2>Ropa Casual</h2>
+                    <p>Comodidad para el día a día</p>
+                    <button class="carousel-cta">Comprar Ahora</button>
+                </div>
+            </div>
+        </div>
+        
+        <button class="carousel-arrow prev" id="carouselPrev" aria-label="Anterior">‹</button>
+        <button class="carousel-arrow next" id="carouselNext" aria-label="Siguiente">›</button>
+        
+        <div class="carousel-indicators" id="carouselIndicators">
+            <button class="carousel-indicator active" data-slide="0" aria-label="Ir a slide 1"></button>
+            <button class="carousel-indicator" data-slide="1" aria-label="Ir a slide 2"></button>
+            <button class="carousel-indicator" data-slide="2" aria-label="Ir a slide 3"></button>
+        </div>
+    </section>
+
+    <!-- Sección de Marcas -->
+    <section class="brands-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nuestras Marcas</h2>
+                <p class="section-subtitle">Calidad garantizada de las mejores marcas internacionales</p>
+            </div>
+            <div class="brands-grid">
+                <div class="brand-item">
+                    <div class="brand-content">
+                        <div class="brand-image-wrapper">
+                            <img src="/images/marcas/milon.jpg" alt="Marca 1" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+                <div class="brand-item">
+                    <div class="brand-content">
+                        <div class="brand-image-wrapper">
+                            <img src="/images/marcas/bymaster.jpg" alt="Marca 2" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+                <div class="brand-item">
+                    <div class="brand-content">
+                        <div class="brand-image-wrapper">
+                            <img src="/images/marcas/Kily.jpg" alt="Marca 3" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+                <div class="brand-item">
+                    <div class="brand-content">
+                        <div class="brand-image-wrapper">
+                            <img src="/images/marcas/NANAY.jpg" alt="Marca 4" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+                <div class="brand-item">
+                    <div class="brand-content">
+                        <div class="brand-image-wrapper">
+                            <img src="/images/marcas/LittleMic.png" alt="Marca 5" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filtros por Edad -->
+    <section class="age-filter-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Seleccionar por Edad</h2>
+                <p class="section-subtitle">Encuentra lo perfecto para cada etapa</p>
+            </div>
+            <div class="age-filters">
+                <button class="age-filter active" data-age="0-6">0-6 meses</button>
+                <button class="age-filter" data-age="6-12">6-12 meses</button>
+                <button class="age-filter" data-age="1-2">1-2 años</button>
+                <button class="age-filter" data-age="3-5">3-5 años</button>
+                <button class="age-filter" data-age="6-8">6-8 años</button>
+                <button class="age-filter" data-age="9-12">9-12 años</button>
+                <button class="age-filter" data-age="13+">13+ años</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lo Nuevo de la Semana CON SLIDER -->
+    <section class="featured-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Lo Nuevo de la Semana</h2>
+                <p class="section-subtitle">Descubre las últimas tendencias</p>
+            </div>
+
+            <div class="featured-grid">
+                <!-- Los productos se cargarán dinámicamente aquí -->
+            </div>
+            
+            <div class="load-more-container">
+                <button class="btn-load-more" id="loadMoreBtn">Ver Más Productos</button>
+            </div> 
+        </div>
+    </section>
+
+    <!-- Grid de Productos Principal -->
+    <section class="products-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nuestros Productos</h2>
+                <p class="section-subtitle">La mejor selección para tus pequeños</p>
+            </div>
+            <div id="productsGrid">
+                <article class="product-card" data-id="1">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1503919545889-aef636e10ad4?w=400&h=500&fit=crop" alt="Camiseta Gráfica Niño" loading="lazy">
+                        <span class="product-badge">-30%</span>
+                        <div class="product-actions">
+                            <button class="product-action-btn" aria-label="Agregar a favoritos">
+                                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-category">BÁSICOS</p>
+                        <h3 class="product-name">Camiseta para niño manga corta</h3>
+                        <div class="product-price">
+                            <span class="price-current">$18.00</span>
+                            <span class="price-original">$24.00</span>
+                        </div>
+                        <button class="product-add-btn">Agregar al Carrito</button>
+                    </div>
+                </article>
+
+                <article class="product-card" data-id="2">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1622290291468-a28f7a7dc6a8?w=400&h=500&fit=crop" alt="Camiseta Gummy Bear" loading="lazy">
+                        <span class="product-badge">-30%</span>
+                        <div class="product-actions">
+                            <button class="product-action-btn" aria-label="Agregar a favoritos">
+                                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-category">BÁSICOS</p>
+                        <h3 class="product-name">Camiseta para niño gummy bear</h3>
+                        <div class="product-price">
+                            <span class="price-current">$22.00</span>
+                            <span class="price-original">$30.00</span>
+                        </div>
+                        <button class="product-add-btn">Agregar al Carrito</button>
+                    </div>
+                </article>
+
+                <article class="product-card" data-id="3">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1503944583220-79d8926ad5e2?w=400&h=500&fit=crop" alt="Camiseta sin mangas" loading="lazy">
+                        <span class="product-badge">-30%</span>
+                        <div class="product-actions">
+                            <button class="product-action-btn" aria-label="Agregar a favoritos">
+                                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-category">BÁSICOS</p>
+                        <h3 class="product-name">Camiseta para niña manga sisa</h3>
+                        <div class="product-price">
+                            <span class="price-current">$16.00</span>
+                            <span class="price-original">$22.00</span>
+                        </div>
+                        <button class="product-add-btn">Agregar al Carrito</button>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="searchResultsSection" class="hidden">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Resultados de Búsqueda</h2>
+            </div>
+            <div id="searchResultsGrid"></div>
+        </div>
+    </section>
+</main>
+
+<!-- WhatsApp Flotante -->
+<a href="https://wa.me/573001234567?text=Hola!%20Quiero%20información%20sobre%20sus%20productos" class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="white">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+    </svg>
+</a>
+
+<div id="productDetail" class="hidden"></div>
+
+<!-- ========== SCRIPTS ========== -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script type="module" src="js/menuMovil.js"></script>
+<script type="module" src="js/carousel.js"></script>
+<script type="module" src="js/logica-barra-producto.js"></script>
+<script type="module" src="js/search.js"></script>
+<script type="module" src="js/sistema-de-filtrado.js"></script>
+<script type="module" src="js/agregar-carrito-logica.js"></script>
+<script type="module" src="js/nav.js"></script>
+<script type="module" src="js/featured-slider.js"></script>
+
+</body>
+</html
