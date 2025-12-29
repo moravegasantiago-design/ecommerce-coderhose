@@ -10,8 +10,7 @@ import {
   agregarMenuDeOpciones,
   sistemaDeFiltrado,
 } from "./sistema-de-filtrado.js";
-import { filtrarProductos, aggProductos } from "./search.js";
-const productos = JSON.parse(localStorage.getItem("productos")) || [];
+import { filtrarProductos, aggProductos, traerProductos } from "./search.js";
 let filtrosActivosNav = [];
 let productosFiltrados = [];
 let productosOriginal = [];
@@ -40,8 +39,9 @@ const diccionarioTitulos = (opcion) => {
 };
 const rederizarMenuDeFiltros = new agregarMenuDeOpciones([]);
 class rederizadoDeNav {
-  constructor(opcion) {
+  constructor(opcion, productos) {
     this.opcion = opcion;
+    this.productos = productos;
   }
   rederizadoNav() {
     reiniciarScroll(window);
@@ -50,8 +50,8 @@ class rederizadoDeNav {
     productosFiltrados = [];
     const titulos = diccionarioTitulos(this.opcion);
     crearTemplate(templanteFiltro(titulos));
-    productosOriginal = filtrarProductos(this.opcion, productos);
-    productosFiltrados = filtrarProductos(this.opcion, productos);
+    productosOriginal = filtrarProductos(this.opcion, this.productos);
+    productosFiltrados = filtrarProductos(this.opcion, this.productos);
     rederizarMenuDeFiltros.productos = productosFiltrados;
     rederizarMenuDeFiltros.renderizarMenu();
     aggProductos(productosOriginal);
@@ -128,4 +128,17 @@ document.addEventListener("click", (e) => {
   modificarFiltros(filtrosActivosNav);
   limpiarContenidoNav();
 });
-document.querySelector(".desktop-nav-link.nuevo").click();
+
+document.addEventListener("DOMContentLoaded", async () => {
+  document.querySelector(".loading-overlay-dulce").classList.add("active");
+  try {
+    const productos = await traerProductos();
+    rederizado.opcion = "nuevo";
+    rederizado.productos = productos;
+    rederizado.rederizadoNav();
+  } catch (err) {
+    console.error(err);
+  } finally {
+    document.querySelector(".loading-overlay-dulce").classList.remove("active");
+  }
+});

@@ -53,7 +53,7 @@ const sugerenciaMovil = document.querySelector("#suggestionsListMobile");
 const sugerenciaDesktop = document.querySelector("#suggestionsListDesktop");
 const sugerenciaDesktopActive = document.querySelector(".search-suggestions");
 
-const traerProductos = async () => {
+export const traerProductos = async () => {
   try {
     if (productos.length === 0) {
       const productosSnap = await getDocs(collection(db, "productos-falsos"));
@@ -66,14 +66,13 @@ const traerProductos = async () => {
 
       localStorage.setItem("productos", JSON.stringify(productos));
     }
-
     return productos;
   } catch (err) {
     console.error(`Traer productos(serch): ${err}`);
     return [];
   }
 };
-traerProductos();
+
 
 const rederizarMenuDeFiltros = new agregarMenuDeOpciones([]);
 class buscador {
