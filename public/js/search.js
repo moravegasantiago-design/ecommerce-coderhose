@@ -19,11 +19,14 @@ import { cogerDatos } from "./sistema-de-filtrado.js";
 import {
   sistemaDeFiltrado,
   agregarMenuDeOpciones,
+  limpiarTodosFiltros,
 } from "./sistema-de-filtrado.js";
+
 let filtrosActivosBusqueda = [];
 let productosFiltrados = [];
 let productosOriginal = [];
 const productos = JSON.parse(localStorage.getItem("productos")) || [];
+
 const busquedaMovil = () => {
   const LupaSearch = document.querySelector(".search-mobile");
   const mobileSearch = document.querySelector(".mobile-search");
@@ -42,7 +45,9 @@ const cerrarBusquedaMovil = () => {
     mobileSearch.classList.remove("active");
   }
 };
+
 busquedaMovil();
+
 const inputDesktop = document.querySelector(".search-input");
 const formDesktop = document.querySelector(".form-input");
 const inputMovil = document.querySelector(".mobile-search-input");
@@ -73,8 +78,8 @@ export const traerProductos = async () => {
   }
 };
 
-
 const rederizarMenuDeFiltros = new agregarMenuDeOpciones([]);
+
 class buscador {
   constructor(
     inputMovil,
@@ -252,12 +257,15 @@ const cerrarSugerenciar = () => {
     }
   });
 };
+
 cerrarSugerenciar();
+
 const eliminarSinResultado = (div) => {
   const siguiente = div.nextElementSibling;
-  if (!siguiente.classList.contains("no-results")) return;
+  if (!siguiente || !siguiente.classList.contains("no-results")) return;
   siguiente.remove();
 };
+
 export const aggProductos = (productos) => {
   const div = document.querySelector("#productsContainer");
   div.innerHTML = "";
@@ -269,6 +277,7 @@ export const aggProductos = (productos) => {
     div.insertAdjacentHTML("beforeend", templanteProductos(produt));
   });
 };
+
 export const filtrarProductos = (busqueda, productosFil) => {
   const productosFiltrados = productosFil.filter(
     (obj) =>
@@ -280,6 +289,7 @@ export const filtrarProductos = (busqueda, productosFil) => {
   );
   return productosFiltrados;
 };
+
 const mostrarBusqueda = (busqueda) => {
   reiniciarScroll(window);
   filtrosActivosBusqueda = [];
@@ -291,6 +301,7 @@ const mostrarBusqueda = (busqueda) => {
   rederizarMenuDeFiltros.renderizarMenu();
   aggProductos(productosFiltrados);
 };
+
 const modificarFiltros = () => {
   if (!cogerDatos()) return;
   cogerDatos().forEach((d) => {
@@ -316,10 +327,13 @@ const modificarFiltros = () => {
     }
     const filtro = filtrosActivosBusqueda[verificarClaveIndex];
     d[clave[0]].forEach((a) => {
-      filtro[clave[0]].push(a);
+      if (!filtro[clave[0]].includes(a)) {
+        filtro[clave[0]].push(a);
+      }
     });
   });
 };
+
 const miBuscador = new buscador(
   inputMovil,
   inputDesktop,
@@ -338,6 +352,7 @@ const miBuscador = new buscador(
 miBuscador.eventoInput();
 miBuscador.eventoTecla();
 miBuscador.eventoClick();
+
 const limpiarContenido = () => {
   sistemaDeFiltrado(
     filtrosActivosBusqueda,
@@ -351,7 +366,25 @@ const limpiarContenido = () => {
   if (!cantidad) return;
   cantidad.textContent = productosFiltrados.length;
 };
+
+const resetearFiltrosBusqueda = () => {
+  filtrosActivosBusqueda = [];
+  limpiarTodosFiltros();
+  productosFiltrados = [...productosOriginal];
+  aggProductos(productosFiltrados);
+  rederizarMenuDeFiltros.productos = productosFiltrados;
+  rederizarMenuDeFiltros.renderizarMenu();
+  const cantidad = document.getElementById("resultsCount");
+  if (cantidad) {
+    cantidad.textContent = productosFiltrados.length;
+  }
+};
+
 document.addEventListener("click", (e) => {
+  if (e.target.closest(".clear-filters-btn.buscador")) {
+    resetearFiltrosBusqueda();
+    return;
+  }
   if (
     !e.target.closest(".apply-filters-btn.buscador") &&
     !e.target.closest(".remover-filter")

@@ -145,119 +145,108 @@ export const sugerenciaTemplante = (texto, categoria, cantidad)=>{
 }
 export const templanteBusqueda = (opcion, cantidad)=>{
     const templante = `<!-- Sección de Resultados de Búsqueda -->
-    <section class="search-results-section">
-        <div class="container">
-
-            <!-- ✅ BACKDROP OSCURO PARA MÓVIL -->
-            <div class="nav-overlay" id="navOverlay"></div>
-            
-            <!-- Panel de Filtros (Lateral en desktop, desplegable en móvil) -->
-            <div class="search-content">
-                <aside class="filters-sidebar" id="filtersSidebar">
-                    <div class="filters-header">
-                        <h3>Filtrar por</h3>
-                        <button class="filters-close" id="filtersClose">✕</button>
-                    </div>
+            <section class="search-results-section">
+                <div class="container">
+                    <!-- ✅ BACKDROP OSCURO PARA MÓVIL -->
+                    <div class="nav-overlay" id="navOverlay"></div>
                     
-                    <!-- Categorías -->
-                    <div class="filter-group">
-                        <h4 class="filter-title">Categoria</h4>
-                        <div class="filter-options" id="categoryFilters">
-                            <!-- Se llenarán dinámicamente con JS -->
-                        </div>
-                        <div class="filter-pagination">
+                    <!-- Panel de Filtros (Lateral en desktop, desplegable en móvil) -->
+                    <div class="search-content">
+                        <aside class="filters-sidebar" id="filtersSidebar">
+                            <div class="filters-header">
+                                <h3>Filtrar por</h3>
+                                <button class="filters-close" id="filtersClose">✕</button>
+                            </div>
                             
-                        </div>
-                    </div>
+                            <!-- Categorías -->
+                            <div class="filter-group">
+                                <h4 class="filter-title">Categoria</h4>
+                                <div class="filter-options" id="categoryFilters">
+                                    <!-- Se llenarán dinámicamente con JS -->
+                                </div>
+                                <div class="filter-pagination">
+                                    
+                                </div>
+                            </div>
 
-                    <!-- Rango de Precios -->
-                    <div class="filter-group">
-                        <h4 class="filter-title">Precio</h4>
-                        <div class="price-range">
-                            <input type="number" class="price-input" data-precio="min" placeholder="Mín" min="0">
-                            <span>-</span>
-                            <input type="number" class="price-input" data-precio="max" placeholder="Máx">
-                        </div>
-                        <span class="price-error" id="priceError"></span>
-                    </div>
+                            <!-- Rango de Precios -->
+                            <div class="filter-group">
+                                <h4 class="filter-title">Precio</h4>
+                                <div class="price-range">
+                                    <input type="number" class="price-input" data-precio="min" placeholder="Mín" min="0">
+                                    <span>-</span>
+                                    <input type="number" class="price-input" data-precio="max" placeholder="Máx">
+                                </div>
+                                <span class="price-error" id="priceError"></span>
+                            </div>
 
-                    <!-- Tallas -->
-                    <div class="filter-group">
-                        <h4 class="filter-title">Talla</h4>
-                        <div class="size-grid">
-                        </div>
-                    </div>
+                            <!-- Tallas -->
+                            <div class="filter-group">
+                                <h4 class="filter-title">Talla</h4>
+                                <div class="size-grid">
+                                </div>
+                            </div>
 
-                    <!-- Colores -->
-                    <div class="filter-group">
-                        <h4 class="filter-title">Color</h4>
-                        <div class="color-grid">
-                        </div>
-                    </div>
+                            <!-- Colores -->
+                            <div class="filter-group">
+                                <h4 class="filter-title">Color</h4>
+                                <div class="color-grid">
+                                </div>
+                            </div>
 
-                    <!-- Botones de acción -->
-                    <div class="filter-actions">
-                        <button class="clear-filters-btn buscador">Limpiar filtros</button>
-                        <button class="apply-filters-btn buscador">Aplicar filtros</button>
-                    </div>
-                </aside>
+                            <!-- Botones de acción -->
+                            <div class="filter-actions">
+                                <button class="clear-filters-btn buscador">Limpiar filtros</button>
+                                <button class="apply-filters-btn buscador">Aplicar filtros</button>
+                            </div>
+                        </aside>
+                        
+                        
+                        <!-- Grid de Resultados -->
+                        <div class="results-grid">
+                        <div class="active-filters" id="activeFilters">
+                            <!-- Filtros activos -->
+                            <!-- Se llenarán dinámicamente -->
                 
-                
-                <!-- Grid de Resultados -->
-                <div class="results-grid">
-                <div class="active-filters" id="activeFilters">
-                    <!-- Filtros activos -->
-                    <!-- Se llenarán dinámicamente -->
-        
-                </div>
-                <!-- Controles de búsqueda y título -->
-            <div class="search-controls">
-            <!-- Header de Búsqueda -->
-            <div class="search-header">
-                <div class="search-info">
-                    <h1 class="search-title">Resultados para: <span id="searchTerm">"${opcion}"</span></h1>
-                    <p class="search-count"><span id="resultsCount">${cantidad}</span> productos encontrados</p>
-                </div>
-                
-                <!-- Botón para limpiar búsqueda -->
-                <button class="clear-search" onclick="window.location.href='index.html'">
-                    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <line x1="18" y1="6" x2="6" y2="18"></line>
-                        <line x1="6" y1="6" x2="18" y2="18"></line>
-                    </svg>
-                    Limpiar búsqueda
-                </button>
-            </div>
-                <div class="filter-section">
-                    <button class="filter-toggle" id="filterToggle">
-                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
-                        </svg>
-                        Filtros
-                    </button>
-                    
-                    <select class="sort-select" id="sortSelect">
-                        <option value="relevance">Más relevante</option>
-                        <option value="price-low">Precio: Menor a Mayor</option>
-                        <option value="price-high">Precio: Mayor a Menor</option>
-                        <option value="newest">Más nuevos</option>
-                        <option value="popular">Más populares</option>
-                    </select>
-                </div>
-                    <!-- Encabezado de Categoría -->
-                    <!-- Mensaje sin resultados -->
-                    <!-- Productos - se llenarán dinámicamente con JS -->
-                    <div class = "productos-contenedor" id="productsContainer">
-                        <!-- aca van los productos -->
-                    </div>
+                        </div>
+                        <!-- Controles de búsqueda y título -->
+                    <div class="search-controls">
+                        <div class="filter-section">
+                            <button class="filter-toggle" id="filterToggle">
+                                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+                                </svg>
+                                Filtros
+                            </button>
+                            
+                            <select class="sort-select" id="sortSelect">
+                                <option value="relevance">Más relevante</option>
+                                <option value="price-low">Precio: Menor a Mayor</option>
+                                <option value="price-high">Precio: Mayor a Menor</option>
+                                <option value="newest">Más nuevos</option>
+                                <option value="popular">Más populares</option>
+                            </select>
+                        </div>
+                            <!-- Encabezado de Búsqueda -->
+                            <div class="search-header">
+                                <div class="search-info">
+                                    <h1 class="search-title">Resultados para "${opcion}"</h1>
+                                    <p class="search-count"><span id="resultsCount">${cantidad}</span> productos encontrados</p>
+                                </div>
+                            </div>
+                            <!-- Mensaje sin resultados -->
+                            <!-- Productos - se llenarán dinámicamente con JS -->
+                            <div class= "productos-contenedor" id="productsContainer">
+                                <!-- aca van los productos -->
+                            </div>
 
-                    <!-- Loading State -->
-                    <div class="loading-state" id="loadingState" style="display: none;">
-                        <div class="loading-spinner"></div>
-                        <p>Buscando productos...</p>
+                            <!-- Loading State -->
+                            <div class="loading-state" id="loadingState" style="display: none;">
+                                <div class="loading-spinner"></div>
+                                <p>Buscando productos...</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
 
             <!-- Paginación -->
             <div class="pagination" id="pagination">

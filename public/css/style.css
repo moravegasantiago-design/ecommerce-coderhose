@@ -711,11 +711,11 @@ a {
 .search-mobile {
     display: flex;
 }
-/* Fix para z-index de notificaciones */
+
 .swal2-container {
     z-index: 999999 !important;
 }
-/* ========== DESKTOP NAV ========== */
+
 .desktop-nav {
     background: transparent;
     display: none;
@@ -795,7 +795,7 @@ a {
     color: var(--primary-pink);
 }
 
-/* ========== MOBILE MENU ========== */
+
 .nav-menu {
     position: fixed;
     top: 0;

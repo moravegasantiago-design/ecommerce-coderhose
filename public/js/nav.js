@@ -9,11 +9,14 @@ import { templanteFiltro } from "./templantes.js";
 import {
   agregarMenuDeOpciones,
   sistemaDeFiltrado,
+  limpiarTodosFiltros,
 } from "./sistema-de-filtrado.js";
 import { filtrarProductos, aggProductos, traerProductos } from "./search.js";
+
 let filtrosActivosNav = [];
 let productosFiltrados = [];
 let productosOriginal = [];
+
 const diccionarioTitulos = (opcion) => {
   const diccionario = {
     nuevo: "Lo más reciente",
@@ -37,7 +40,9 @@ const diccionarioTitulos = (opcion) => {
   };
   return diccionario[opcion];
 };
+
 const rederizarMenuDeFiltros = new agregarMenuDeOpciones([]);
+
 class rederizadoDeNav {
   constructor(opcion, productos) {
     this.opcion = opcion;
@@ -58,7 +63,9 @@ class rederizadoDeNav {
     filtrosMobil();
   }
 }
+
 const rederizado = new rederizadoDeNav([]);
+
 class opcionMenu {
   constructor(menuDesklop, menuMovil) {
     this.menuDesklop = menuDesklop;
@@ -113,11 +120,30 @@ const limpiarContenidoNav = () => {
   cantidad.textContent = productosFiltrados.length;
 };
 
+const resetearFiltrosNav = () => {
+  filtrosActivosNav = [];
+  limpiarTodosFiltros();
+  productosFiltrados = [...productosOriginal];
+  aggProductos(productosFiltrados);
+  rederizarMenuDeFiltros.productos = productosFiltrados;
+  rederizarMenuDeFiltros.renderizarMenu();
+  const cantidad = document.getElementById("resultsCount");
+  if (cantidad) {
+    cantidad.textContent = productosFiltrados.length;
+  }
+};
+
 new opcionMenu(
   document.querySelectorAll(".desktop-nav-list li"),
   document.querySelectorAll(".nav-list")
 );
+
 document.addEventListener("click", (e) => {
+  if (e.target.closest(".clear-filters-btn.filtro")) {
+    resetearFiltrosNav();
+    return;
+  }
+
   if (
     !e.target.closest(".apply-filters-btn.filtro") &&
     !e.target.closest(".remover-filter")

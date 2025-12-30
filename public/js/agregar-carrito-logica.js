@@ -1,32 +1,33 @@
 import { reiniciarScroll, ajustarCantidad } from "./utils.js";
 import { valueInputProducto } from "./utils.js";
-import { templanteProductoCarrito, templanteCarritoVacio } from "./templantes.js";
+import {
+  templanteProductoCarrito,
+  templanteCarritoVacio,
+} from "./templantes.js";
 const productos = JSON.parse(localStorage.getItem("productos"));
 class notificacionEcommerce {
-    
+  static productoAgregado(producto) {
+    const isMobile = window.innerWidth <= 640;
 
-    static productoAgregado(producto) {
-        const isMobile = window.innerWidth <= 640;
-        
-        Swal.fire({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-                toast.style.width = isMobile ? '90%' : '340px';
-                toast.style.maxWidth = '340px';
-                toast.style.borderRadius = '12px';
-                toast.style.padding = '0';
-                toast.style.overflow = 'hidden';
-                toast.style.boxShadow = '0 6px 20px rgba(0, 0, 0, 0.12)';
-                toast.style.background = 'white';
-                toast.style.marginTop = isMobile ? '1rem' : '0';
-                toast.style.marginRight = isMobile ? '1rem' : '0';
-                toast.style.zIndex = "9999";
-            },
-            html: `
+    Swal.fire({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.style.width = isMobile ? "90%" : "340px";
+        toast.style.maxWidth = "340px";
+        toast.style.borderRadius = "12px";
+        toast.style.padding = "0";
+        toast.style.overflow = "hidden";
+        toast.style.boxShadow = "0 6px 20px rgba(0, 0, 0, 0.12)";
+        toast.style.background = "white";
+        toast.style.marginTop = isMobile ? "1rem" : "0";
+        toast.style.marginRight = isMobile ? "1rem" : "0";
+        toast.style.zIndex = "9999";
+      },
+      html: `
                 <!-- Contenido principal -->
                 <div style="padding: 1rem; padding-bottom: 0.8rem;">
                     <div style="display: flex; align-items: center; gap: 0.8rem;">
@@ -57,7 +58,9 @@ class notificacionEcommerce {
                                 </span>
                                 <span style="font-weight: 700; font-size: 0.95rem; color: #FF69B4; 
                                              white-space: nowrap;">
-                                    $${(producto.precio * producto.cantidad).toLocaleString()}
+                                    $${(
+                                      producto.precio * producto.cantidad
+                                    ).toLocaleString()}
                                 </span>
                             </div>
                         </div>
@@ -66,7 +69,7 @@ class notificacionEcommerce {
                 
                 <!-- Botón Ver Carrito -->
                 <div style="border-top: 1px solid #F0F0F0; padding: 0;">
-                    <button onclick="window.location.href='carrito.html'; Swal.close();" 
+                    <button onclick="document.getElementById('carrito').click(); Swal.close();" 
                             style="width: 100%; padding: 0.8rem; background: transparent; 
                                    border: none; color: #FF69B4; font-weight: 600; 
                                    font-size: 0.85rem; cursor: pointer; transition: all 0.2s;
@@ -79,34 +82,32 @@ class notificacionEcommerce {
                         Ver carrito
                     </button>
                 </div>
-            `
-        });
-    }
+            `,
+    });
+  }
 
+  static yaExiste() {
+    const isMobile = window.innerWidth <= 640;
 
-    static yaExiste() {
-        const isMobile = window.innerWidth <= 640;
-        
-        Swal.fire({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 2500,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-                toast.style.width = isMobile ? '90%' : '300px';
-                toast.style.maxWidth = '300px';
-                toast.style.borderRadius = '10px';
-                toast.style.padding = '0.8rem';
-                toast.style.background = '#FFF9E6';
-                toast.style.border = '1px solid #FFB84D';
-                toast.style.boxShadow = '0 4px 12px rgba(255, 184, 77, 0.12)';
-                toast.style.marginTop = isMobile ? '1rem' : '0';
-                toast.style.marginRight = isMobile ? '1rem' : '0';
-                toast.style.zIndex = "9999";
-                
-            },
-            html: `
+    Swal.fire({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 2500,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.style.width = isMobile ? "90%" : "300px";
+        toast.style.maxWidth = "300px";
+        toast.style.borderRadius = "10px";
+        toast.style.padding = "0.8rem";
+        toast.style.background = "#FFF9E6";
+        toast.style.border = "1px solid #FFB84D";
+        toast.style.boxShadow = "0 4px 12px rgba(255, 184, 77, 0.12)";
+        toast.style.marginTop = isMobile ? "1rem" : "0";
+        toast.style.marginRight = isMobile ? "1rem" : "0";
+        toast.style.zIndex = "9999";
+      },
+      html: `
                 <div style="display: flex; align-items: center; gap: 0.7rem;">
                     <div style="width: 32px; height: 32px; background: #FFB84D; 
                                 border-radius: 50%; display: flex; align-items: center; 
@@ -121,65 +122,63 @@ class notificacionEcommerce {
                         </div>
                     </div>
                 </div>
-            `
-        });
-    }
+            `,
+    });
+  }
 
+  static eliminado() {
+    const isMobile = window.innerWidth <= 640;
 
-
-    static eliminado() {
-        const isMobile = window.innerWidth <= 640;
-        
-        Swal.fire({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 2000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-                toast.style.width = isMobile ? '90%' : '260px';
-                toast.style.maxWidth = '260px';
-                toast.style.borderRadius = '10px';
-                toast.style.padding = '0.7rem';
-                toast.style.background = '#F5F5F5';
-                toast.style.boxShadow = '0 4px 12px rgba(0,0,0,0.08)';
-                toast.style.marginTop = isMobile ? '1rem' : '0';
-                toast.style.marginRight = isMobile ? '1rem' : '0';
-                toast.style.zIndex = "9999";
-            },
-            html: `
+    Swal.fire({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 2000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.style.width = isMobile ? "90%" : "260px";
+        toast.style.maxWidth = "260px";
+        toast.style.borderRadius = "10px";
+        toast.style.padding = "0.7rem";
+        toast.style.background = "#F5F5F5";
+        toast.style.boxShadow = "0 4px 12px rgba(0,0,0,0.08)";
+        toast.style.marginTop = isMobile ? "1rem" : "0";
+        toast.style.marginRight = isMobile ? "1rem" : "0";
+        toast.style.zIndex = "9999";
+      },
+      html: `
                 <div style="display: flex; align-items: center; gap: 0.6rem;">
                     <div style="font-size: 1.2rem;">🗑️</div>
                     <div style="font-weight: 600; color: #666; font-size: 0.85rem;">
                         Eliminado del carrito
                     </div>
                 </div>
-            `
-        });
-    }
+            `,
+    });
+  }
 
-    static error(mensaje = 'Hubo un problema') {
-        const isMobile = window.innerWidth <= 640;
-        
-        Swal.fire({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 2500,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-                toast.style.width = isMobile ? '90%' : '300px';
-                toast.style.maxWidth = '300px';
-                toast.style.borderRadius = '10px';
-                toast.style.padding = '0.8rem';
-                toast.style.background = '#FFE5E5';
-                toast.style.border = '1px solid #FF4444';
-                toast.style.boxShadow = '0 4px 12px rgba(255, 68, 68, 0.12)';
-                toast.style.marginTop = isMobile ? '1rem' : '0';
-                toast.style.marginRight = isMobile ? '1rem' : '0';
-                toast.style.zIndex = "9999";
-            },
-            html: `
+  static error(mensaje = "Hubo un problema") {
+    const isMobile = window.innerWidth <= 640;
+
+    Swal.fire({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 2500,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.style.width = isMobile ? "90%" : "300px";
+        toast.style.maxWidth = "300px";
+        toast.style.borderRadius = "10px";
+        toast.style.padding = "0.8rem";
+        toast.style.background = "#FFE5E5";
+        toast.style.border = "1px solid #FF4444";
+        toast.style.boxShadow = "0 4px 12px rgba(255, 68, 68, 0.12)";
+        toast.style.marginTop = isMobile ? "1rem" : "0";
+        toast.style.marginRight = isMobile ? "1rem" : "0";
+        toast.style.zIndex = "9999";
+      },
+      html: `
                 <div style="display: flex; align-items: center; gap: 0.7rem;">
                     <div style="font-size: 1.3rem;">⚠️</div>
                     <div style="text-align: left; flex: 1;">
@@ -188,20 +187,19 @@ class notificacionEcommerce {
                         </div>
                     </div>
                 </div>
-            `
-        });
-    }
+            `,
+    });
+  }
 }
 class seleccionProducto {
-    
-    static async mostrar(producto) {
-        const isMobile = window.innerWidth <= 640;
-        
-        const style = document.createElement('style');
-        style.textContent = `
+  static async mostrar(producto) {
+    const isMobile = window.innerWidth <= 640;
+
+    const style = document.createElement("style");
+    style.textContent = `
             .swal2-popup {
                 border-radius: 8px !important;
-                padding: ${isMobile ? '1.5rem' : '2rem'} !important;
+                padding: ${isMobile ? "1.5rem" : "2rem"} !important;
                 box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
                 background: white !important;
             }
@@ -209,8 +207,8 @@ class seleccionProducto {
                 text-align: center;
             }
             .modal-image {
-                width: ${isMobile ? '110px' : '130px'};
-                height: ${isMobile ? '110px' : '130px'};
+                width: ${isMobile ? "110px" : "130px"};
+                height: ${isMobile ? "110px" : "130px"};
                 object-fit: cover;
                 border-radius: 4px;
                 margin: 0 auto 1rem;
@@ -327,7 +325,7 @@ class seleccionProducto {
                 text-align: center;
             }
             .swal2-title {
-                font-size: ${isMobile ? '1.05rem' : '1.2rem'} !important;
+                font-size: ${isMobile ? "1.05rem" : "1.2rem"} !important;
                 font-weight: 600 !important;
                 color: #1a1a1a !important;
                 padding: 0 !important;
@@ -365,18 +363,20 @@ class seleccionProducto {
                 border-color: #ccc !important;
             }
         `;
-        document.head.appendChild(style);
-        
-        let selectedColor = producto.colores[0];
-        let selectedSize = producto.tallas[0];
-        let quantity = 1;
-        
-        const result = await Swal.fire({
-            title: producto.nombre,
-            html: `
+    document.head.appendChild(style);
+
+    let selectedColor = producto.colores[0];
+    let selectedSize = producto.tallas[0];
+    let quantity = 1;
+
+    const result = await Swal.fire({
+      title: producto.nombre,
+      html: `
                 <div class="modal-content">
                     <div class="modal-category">${producto.categorias[0]}</div>
-                    <img src="${producto.imagen}" class="modal-image" alt="${producto.nombre}">
+                    <img src="${producto.imagen}" class="modal-image" alt="${
+        producto.nombre
+      }">
                     <div class="modal-price">$${producto.precio.toLocaleString()}</div>
                 </div>
                 
@@ -385,24 +385,32 @@ class seleccionProducto {
                 <div class="field-group">
                     <label class="field-label">Color</label>
                     <div class="color-options" id="colorOptions">
-                        ${producto.colores.map((color, i) => `
-                            <div class="color-item ${i === 0 ? 'active' : ''}" 
+                        ${producto.colores
+                          .map(
+                            (color, i) => `
+                            <div class="color-item ${i === 0 ? "active" : ""}" 
                                  data-color="${color}"
                                  style="background: ${color};">
                             </div>
-                        `).join('')}
+                        `
+                          )
+                          .join("")}
                     </div>
                 </div>
                 
                 <div class="field-group">
                     <label class="field-label">Talla</label>
                     <div class="size-options" id="sizeOptions">
-                        ${producto.tallas.map((talla, i) => `
-                            <div class="size-item ${i === 0 ? 'active' : ''}" 
+                        ${producto.tallas
+                          .map(
+                            (talla, i) => `
+                            <div class="size-item ${i === 0 ? "active" : ""}" 
                                  data-size="${talla}">
                                 ${talla}
                             </div>
-                        `).join('')}
+                        `
+                          )
+                          .join("")}
                     </div>
                 </div>
                 
@@ -415,270 +423,419 @@ class seleccionProducto {
                     </div>
                 </div>
             `,
-            width: isMobile ? '90%' : '420px',
-            showCancelButton: true,
-            confirmButtonText: 'Agregar al carrito',
-            cancelButtonText: 'Cancelar',
-            buttonsStyling: true,
-            didOpen: () => {
-                document.querySelectorAll('.color-item').forEach(item => {
-                    item.addEventListener('click', function() {
-                        document.querySelectorAll('.color-item').forEach(i => i.classList.remove('active'));
-                        this.classList.add('active');
-                        selectedColor = this.dataset.color;
-                    });
-                });
-                
-                document.querySelectorAll('.size-item').forEach(item => {
-                    item.addEventListener('click', function() {
-                        document.querySelectorAll('.size-item').forEach(i => i.classList.remove('active'));
-                        this.classList.add('active');
-                        selectedSize = this.dataset.size;
-                    });
-                });
-                
-                const qtyValue = document.getElementById('qtyValue');
-                document.getElementById('qtyMinus').addEventListener('click', () => {
-                    if (quantity > 1) {
-                        quantity--;
-                        qtyValue.textContent = quantity;
-                    }
-                });
-                document.getElementById('qtyPlus').addEventListener('click', () => {
-                    if (quantity < 10) {
-                        quantity++;
-                        qtyValue.textContent = quantity;
-                    }
-                });
-            },
-            preConfirm: () => {
-                return {
-                    id: `${producto.id}-talla:${selectedSize}-color:${selectedColor}`,
-                    nombre: producto.nombre,
-                    imagen: producto.imagen,
-                    color: selectedColor,
-                    precio : producto.precio,
-                    talla: selectedSize,
-                    cantidad: quantity
-                };
-            },
-            willClose: () => {
-                document.head.removeChild(style);
-            }
+      width: isMobile ? "90%" : "420px",
+      showCancelButton: true,
+      confirmButtonText: "Agregar al carrito",
+      cancelButtonText: "Cancelar",
+      buttonsStyling: true,
+      didOpen: () => {
+        document.querySelectorAll(".color-item").forEach((item) => {
+          item.addEventListener("click", function () {
+            document
+              .querySelectorAll(".color-item")
+              .forEach((i) => i.classList.remove("active"));
+            this.classList.add("active");
+            selectedColor = this.dataset.color;
+          });
         });
-        
-        if (result.isConfirmed) {
-            return result.value;
-        }
-        
-        return null;
+
+        document.querySelectorAll(".size-item").forEach((item) => {
+          item.addEventListener("click", function () {
+            document
+              .querySelectorAll(".size-item")
+              .forEach((i) => i.classList.remove("active"));
+            this.classList.add("active");
+            selectedSize = this.dataset.size;
+          });
+        });
+
+        const qtyValue = document.getElementById("qtyValue");
+        document.getElementById("qtyMinus").addEventListener("click", () => {
+          if (quantity > 1) {
+            quantity--;
+            qtyValue.textContent = quantity;
+          }
+        });
+        document.getElementById("qtyPlus").addEventListener("click", () => {
+          if (quantity < 10) {
+            quantity++;
+            qtyValue.textContent = quantity;
+          }
+        });
+      },
+      preConfirm: () => {
+        return {
+          id: `${producto.id}-talla:${selectedSize}-color:${selectedColor}`,
+          nombre: producto.nombre,
+          imagen: producto.imagen,
+          color: selectedColor,
+          precio: producto.precio,
+          talla: selectedSize,
+          cantidad: quantity,
+        };
+      },
+      willClose: () => {
+        document.head.removeChild(style);
+      },
+    });
+
+    if (result.isConfirmed) {
+      return result.value;
     }
+
+    return null;
+  }
 }
 
 class logicaCarrito {
-    constructor(id, producto){
-        this.carrito = [];
-        this.id = id;
-        this.producto = producto;
-    }
-    buscarProducto (){
-        const producto = this.producto.find(p => p.id === this.id);
-        return producto;
-    }
-    verificarExistencia(){
-        const buscarProductoCarrito = this.carrito.findIndex(p => JSON.stringify(p.id) === JSON.stringify(this.producto.id));
-        const verificador = buscarProductoCarrito !== -1;
-        return {
-            existencia : verificador,
-            producto :  this.producto
-        };
-    }
-    iconoDecarito(){
-        const contenedor = document.querySelector(".icon-badge");
-        contenedor.style.display = this.carrito.length === 0 ? "none" : "block";
-        contenedor.textContent = `${this.carrito.length}`;
-    }
-    aggProducto(producto){
-        this.carrito.push(producto)
-        this.iconoDecarito();
-    }
-    
+  constructor(id, producto) {
+    this.carrito = [];
+    this.id = id;
+    this.producto = producto;
+  }
+  buscarProducto() {
+    const producto = this.producto.find((p) => p.id === this.id);
+    return producto;
+  }
+  verificarExistencia() {
+    const buscarProductoCarrito = this.carrito.findIndex(
+      (p) => JSON.stringify(p.id) === JSON.stringify(this.producto.id)
+    );
+    const verificador = buscarProductoCarrito !== -1;
+    return {
+      existencia: verificador,
+      producto: this.producto,
+    };
+  }
+  iconoDecarito() {
+    const contenedor = document.querySelector(".icon-badge");
+    contenedor.style.display = this.carrito.length === 0 ? "none" : "block";
+    contenedor.textContent = `${this.carrito.length}`;
+  }
+  aggProducto(producto) {
+    this.carrito.push(producto);
+    this.iconoDecarito();
+    localStorage.setItem("carrito-compras", JSON.stringify(this.carrito));
+  }
 }
 
 const carrito = new logicaCarrito([]);
+carrito.carrito = JSON.parse(localStorage.getItem("carrito-compras")) || [];
+carrito.iconoDecarito();
 const buscarProducto = (id, productos) => {
-    carrito.id =  id;
-    carrito.producto = productos;
-    const producto = carrito.buscarProducto()
-    return producto;
-}
-const sistemaDeNotificacionesYExistencia =(id, seleccion)=>{
-    carrito.id =  id;
-    carrito.producto = seleccion;
-    const obj = carrito.verificarExistencia()
-    if(!obj.existencia){
-        carrito.aggProducto(seleccion)
-        notificacionEcommerce.productoAgregado(seleccion)
-    }else if(!obj.producto){
-        notificacionEcommerce.error()
-    }else{
-        notificacionEcommerce.yaExiste()
-    }
-}
-export const agregarCarritoDeCompras = async(productos, id) => {
-    const seleccion = await seleccionProducto.mostrar(buscarProducto(id, productos))
-    if(!seleccion) return;
-    sistemaDeNotificacionesYExistencia(id, seleccion)
-}
+  carrito.id = id;
+  carrito.producto = productos;
+  const producto = carrito.buscarProducto();
+  return producto;
+};
+const sistemaDeNotificacionesYExistencia = (id, seleccion) => {
+  carrito.id = id;
+  carrito.producto = seleccion;
+  const obj = carrito.verificarExistencia();
+  if (!obj.existencia) {
+    carrito.aggProducto(seleccion);
+    notificacionEcommerce.productoAgregado(seleccion);
+  } else if (!obj.producto) {
+    notificacionEcommerce.error();
+  } else {
+    notificacionEcommerce.yaExiste();
+  }
+};
+export const agregarCarritoDeCompras = async (productos, id) => {
+  const seleccion = await seleccionProducto.mostrar(
+    buscarProducto(id, productos)
+  );
+  if (!seleccion) return;
+  sistemaDeNotificacionesYExistencia(id, seleccion);
+};
 
-class verCarritoDeCompra{
-    constructor(carrito){
-        this.carritoArray = carrito;
-        this.totalDeCompra = {};
-        this.overlay = document.querySelector(".cart-overlay");
-        this.contenedor = document.querySelector(".cart-panel");
-        this.carta = document.querySelector(".cart-content");
-    }
-    alternarCarrito(){
-        if(!this.overlay && !this.contenedor && !this.carta) return;
-        reiniciarScroll(this.carta);
-        this.overlay.classList.toggle("active")
-        this.contenedor.classList.toggle("active")
-    }
-    
-    
-    rederizadoCarrito(){
-        const templante = this.carritoArray.length === 0 ? templanteCarritoVacio : templanteProductoCarrito;
-        const array = this.carritoArray.length === 0 ? [1] : this.carritoArray;
-        this.carta.innerHTML = "";
-        array.forEach(p =>  {
-            this.carta.insertAdjacentHTML("beforeend", templante(p));
-        })
-    }
-    verCarrito(){
-        this.rederizadoCarrito();
-        this.alternarCarrito();
-    }
-    aggTotales(obj){
-        if(!obj) return;
-        const totalText = document.querySelector(obj.id)
-        if(!totalText) return;
-        totalText.textContent = `${obj.numero}`;
-    }
-    rederizarTotales(objs){
-        if(!objs) return;
-        objs.forEach(obj => {
-            this.aggTotales(obj)
-        })
-    }
-    textoEnvio(obj){
-        const textoEnvio = document.querySelector("#shippingAmount");
-        const textoBarra = document.querySelector(".shipping-text");
-        if(!textoBarra) return;
-        textoBarra.textContent = "";
-        textoBarra.textContent = `${obj.texto}`;
-        if(!textoEnvio) return;
-        textoEnvio.textContent = "";
-        textoEnvio.classList[obj.funcion]("success")
-        textoBarra.classList[obj.funcion]("success");
-    }
-    envioGratis(progreso, precioEnvioGratis, objs, subTotal){
-        if(progreso < 100){
-            const PrecioAFaltar = precioEnvioGratis - subTotal;
-            this.textoEnvio({
-                texto: `Te faltan $${PrecioAFaltar.toLocaleString()} para envío gratis`,
-                funcion : "remove"
-            });
-            return;
-        }
-        objs[1].numero = "GRATIS";
-        this.textoEnvio({
-            texto: `¡Felicidades! Tu compra supera ${precioEnvioGratis} - Envío GRATIS`,
-            funcion : "add"
-        });
-    }
-    barraDeEnvioGratis(subTotal, objs){
-        const precioEnvioGratis = 150000;
-        const porcentajeActual = parseInt((subTotal / precioEnvioGratis)*100);
-        const barraProgreso = document.querySelector(".progress-fill");
-        if(!barraProgreso) return;
-        barraProgreso.style.width = `${porcentajeActual}%`;
-        this.envioGratis(porcentajeActual, precioEnvioGratis, objs, subTotal)
+class verCarritoDeCompra {
+  constructor(carrito) {
+    this.carritoArray = carrito;
+    this.totalDeCompra = {};
+    this.overlay = document.querySelector(".cart-overlay");
+    this.contenedor = document.querySelector(".cart-panel");
+    this.carta = document.querySelector(".cart-content");
+  }
+  alternarCarrito() {
+    if (!this.overlay && !this.contenedor && !this.carta) return;
+    reiniciarScroll(this.carta);
+    this.overlay.classList.toggle("active");
+    this.contenedor.classList.toggle("active");
+  }
 
+  rederizadoCarrito() {
+    const templante =
+      this.carritoArray.length === 0
+        ? templanteCarritoVacio
+        : templanteProductoCarrito;
+    const array = this.carritoArray.length === 0 ? [1] : this.carritoArray;
+    this.carta.innerHTML = "";
+    array.forEach((p) => {
+      this.carta.insertAdjacentHTML("beforeend", templante(p));
+    });
+  }
+  verCarrito() {
+    this.rederizadoCarrito();
+    this.alternarCarrito();
+  }
+  aggTotales(obj) {
+    if (!obj) return;
+    const totalText = document.querySelector(obj.id);
+    if (!totalText) return;
+    totalText.textContent = `${obj.numero}`;
+  }
+  rederizarTotales(objs) {
+    if (!objs) return;
+    objs.forEach((obj) => {
+      this.aggTotales(obj);
+    });
+  }
+  textoEnvio(obj) {
+    const textoEnvio = document.querySelector("#shippingAmount");
+    const textoBarra = document.querySelector(".shipping-text");
+    if (!textoBarra) return;
+    textoBarra.textContent = "";
+    textoBarra.textContent = `${obj.texto}`;
+    if (!textoEnvio) return;
+    textoEnvio.textContent = "";
+    textoEnvio.classList[obj.funcion]("success");
+    textoBarra.classList[obj.funcion]("success");
+  }
+  envioGratis(progreso, precioEnvioGratis, objs, subTotal) {
+    if (progreso < 100) {
+      const PrecioAFaltar = precioEnvioGratis - subTotal;
+      this.textoEnvio({
+        texto: `Te faltan $${PrecioAFaltar.toLocaleString()} para envío gratis`,
+        funcion: "remove",
+      });
+      return false;
+    }
+    objs[1].numero = "GRATIS";
+    this.textoEnvio({
+      texto: `¡Felicidades! Tienes envío GRATIS 🎉`,
+      funcion: "add",
+    });
+    return true;
+  }
+  barraDeEnvioGratis(subTotal, objs) {
+    const precioEnvioGratis = 150000;
+    const porcentajeActual = Math.min(
+      100,
+      parseInt((subTotal / precioEnvioGratis) * 100)
+    );
+    const barraProgreso = document.querySelector(".progress-fill");
+    if (!barraProgreso) return false;
+    barraProgreso.style.width = `${porcentajeActual}%`;
+    return this.envioGratis(
+      porcentajeActual,
+      precioEnvioGratis,
+      objs,
+      subTotal
+    );
+  }
+
+  calcularTotal() {
+    const subTotal = this.carritoArray.reduce((acum, producto) => {
+      const subTotal = producto.precio * producto.cantidad;
+      return subTotal + acum;
+    }, 0);
+
+    const precioEnvioGratis = 150000;
+    const tieneEnvioGratis = subTotal >= precioEnvioGratis;
+    const envio =
+      this.carritoArray.length === 0 ? 0 : tieneEnvioGratis ? 0 : 15900;
+    const total = envio + subTotal;
+
+    const objs = [
+      {
+        numero: `$${subTotal.toLocaleString()}`,
+        id: "#subtotalAmount",
+      },
+      {
+        numero: tieneEnvioGratis ? "GRATIS" : `$${envio.toLocaleString()}`,
+        id: "#shippingAmount",
+      },
+      {
+        numero: `$${total.toLocaleString()}`,
+        id: "#totalAmount",
+      },
+    ];
+
+    this.totalDeCompra = { subTotal, envio, total, tieneEnvioGratis };
+
+    this.barraDeEnvioGratis(subTotal, objs);
+    this.rederizarTotales(objs);
+  }
+
+  irAlCheckout() {
+    if (this.carritoArray.length === 0) {
+      Swal.fire({
+        icon: "info",
+        title: "Carrito vacío",
+        text: "Agrega productos antes de ir al checkout",
+        confirmButtonColor: "#FF69B4",
+      });
+      return;
     }
 
-    calcularTotal(){
-        const subTotal = this.carritoArray.reduce((acum, producto) => {
-            const subTotal = producto.precio * producto.cantidad;
-            return subTotal + acum;
-        }, 0);
-        const envio =  this.carritoArray.length === 0 ? 0 : 15900;
-        const total = envio + subTotal;
-        const objs = [
-            {
-                numero : `$${subTotal.toLocaleString()}`, id: "#subtotalAmount"
-            },
-            {
-                numero : `$${envio.toLocaleString()}`, id: "#shippingAmount"
-            },
-            {
-                numero : `$${total.toLocaleString()}`, id: "#totalAmount"
-            },
+    let mensaje = `*NUEVO PEDIDO - DULCE KIDS*\n\n`;
+    mensaje += `*Productos:*\n`;
 
-        ];
-        this.barraDeEnvioGratis(subTotal, objs);
-        this.rederizarTotales(objs);
+    this.carritoArray.forEach((producto, index) => {
+      mensaje += `\n${index + 1}. *${producto.nombre}*\n`;
+      mensaje += `   • Talla: ${producto.talla}\n`;
+      mensaje += `   • Color: ${producto.color}\n`;
+      mensaje += `   • Cantidad: ${producto.cantidad}\n`;
+      mensaje += `   • Precio: $${(
+        producto.precio * producto.cantidad
+      ).toLocaleString()}\n`;
+    });
 
+    mensaje += `\n*RESUMEN:*\n`;
+    mensaje += `   Subtotal: $${this.totalDeCompra.subTotal.toLocaleString()}\n`;
+    mensaje += `   Envío: ${
+      this.totalDeCompra.tieneEnvioGratis
+        ? "GRATIS"
+        : "$" + this.totalDeCompra.envio.toLocaleString()
+    }\n`;
+    mensaje += `   *TOTAL: $${this.totalDeCompra.total.toLocaleString()}*\n`;
+    mensaje += `\nPor favor envíame:\n`;
+    mensaje += `   • Nombre completo\n`;
+    mensaje += `   • Dirección de envío\n`;
+    mensaje += `   • Ciudad\n`;
+    mensaje += `   • Teléfono de contacto\n`;
 
+    const numeroWhatsApp = "573232292002";
+    const mensajeCodificado = encodeURIComponent(mensaje);
+    const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensajeCodificado}`;
 
-    }
+    Swal.fire({
+      title: "¿Confirmar pedido?",
+      html: `
+                <div style="text-align: left; padding: 1rem 0;">
+                    <p style="margin-bottom: 1rem; color: #666;">
+                        Serás redirigido a WhatsApp para completar tu pedido.
+                    </p>
+                    <div style="background: #f5f5f5; padding: 1rem; border-radius: 8px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <span>Productos:</span>
+                            <strong>${this.carritoArray.length}</strong>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <span>Subtotal:</span>
+                            <strong>$${this.totalDeCompra.subTotal.toLocaleString()}</strong>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <span>Envío:</span>
+                            <strong style="color: ${
+                              this.totalDeCompra.tieneEnvioGratis
+                                ? "#10b981"
+                                : "#1a1a1a"
+                            }">
+                                ${
+                                  this.totalDeCompra.tieneEnvioGratis
+                                    ? "¡GRATIS!"
+                                    : "$" +
+                                      this.totalDeCompra.envio.toLocaleString()
+                                }
+                            </strong>
+                        </div>
+                        <hr style="border: none; border-top: 1px solid #ddd; margin: 0.5rem 0;">
+                        <div style="display: flex; justify-content: space-between;">
+                            <span style="font-weight: 700;">Total:</span>
+                            <strong style="color: #FF69B4; font-size: 1.2rem;">$${this.totalDeCompra.total.toLocaleString()}</strong>
+                        </div>
+                    </div>
+                </div>
+            `,
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#25D366",
+      cancelButtonColor: "#999",
+      confirmButtonText: "✓ Ir a WhatsApp",
+      cancelButtonText: "Cancelar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.open(urlWhatsApp, "_blank");
+      }
+    });
+  }
 }
 const productoValue = new valueInputProducto([], []);
 const eventoDeClick = (click) => {
-    const indice = carrito.carrito.findIndex(p => JSON.stringify(p.id) === JSON.stringify(click.dataset.id));
-    if(indice === -1) return;
-    carrito.carrito.splice(indice, 1);
-    click.closest(".cart-item").remove();
-    notificacionEcommerce.eliminado();
-}
+  const indice = carrito.carrito.findIndex(
+    (p) => JSON.stringify(p.id) === JSON.stringify(click.dataset.id)
+  );
+  if (indice === -1) return;
+  carrito.carrito.splice(indice, 1);
+  click.closest(".cart-item").remove();
+  notificacionEcommerce.eliminado();
+};
 const sistemaDeBarraProducto = (idProdut) => {
-    productoValue.id = idProdut;
-    productoValue.productos = productos;
-    productoValue.objProducto = {};
-    productoValue.recorrerObj();
-    const objeto = productoValue.objProducto;
-    if(Object.keys(objeto).some(o => o === undefined))return;
-    sistemaDeNotificacionesYExistencia(idProdut, objeto);
-}
+  productoValue.id = idProdut;
+  productoValue.productos = productos;
+  productoValue.objProducto = {};
+  productoValue.recorrerObj();
+  const objeto = productoValue.objProducto;
+  if (Object.keys(objeto).some((o) => o === undefined)) return;
+  sistemaDeNotificacionesYExistencia(idProdut, objeto);
+};
 const sistemaAjusteDeCantidad = (evento, id) => {
-    const verificador = ajustarCantidad(evento, `[data-input= "${id}"]`, `.qty-btn.minus[data-control = "${id}"]`, `.qty-btn.plus[data-control = "${id}"]`);
-    const cantidad = document.querySelector(`[data-input= "${id}"]`).value;
-    const buscarProdutoCantidad = carrito.carrito.find(p => p.id === id);
-    if(!buscarProdutoCantidad) return;
-    buscarProdutoCantidad.cantidad = cantidad;
-    return verificador;
-}
+  const verificador = ajustarCantidad(
+    evento,
+    `[data-input= "${id}"]`,
+    `.qty-btn.minus[data-control = "${id}"]`,
+    `.qty-btn.plus[data-control = "${id}"]`
+  );
+  const cantidad = document.querySelector(`[data-input= "${id}"]`).value;
+  const buscarProdutoCantidad = carrito.carrito.find((p) => p.id === id);
+  if (!buscarProdutoCantidad) return;
+  buscarProdutoCantidad.cantidad = Number(cantidad);
+  return verificador;
+};
 const verCarrito = new verCarritoDeCompra([]);
 document.addEventListener("click", (e) => {
-    if(e.target.closest(".remove-btn") || e.target.closest(".qty-btn.minus") ||e.target.closest(".qty-btn.plus")){
-        if(e.target.closest(".remove-btn")) eventoDeClick(e.target.closest(".remove-btn"));
-        if(e.target.closest(".quantity-control")) if(sistemaAjusteDeCantidad(e.target, e.target.closest(".quantity-control").id)) return;
-        verCarrito.carritoArray = carrito.carrito;
-        verCarrito.calcularTotal();
-        verCarrito.rederizadoCarrito();
-        carrito.iconoDecarito();
-
+  if (
+    e.target.closest(".remove-btn") ||
+    e.target.closest(".qty-btn.minus") ||
+    e.target.closest(".qty-btn.plus")
+  ) {
+    if (e.target.closest(".remove-btn"))
+      eventoDeClick(e.target.closest(".remove-btn"));
+    if (e.target.closest(".quantity-control"))
+      if (
+        sistemaAjusteDeCantidad(
+          e.target,
+          e.target.closest(".quantity-control").id
+        )
+      )
         return;
-    }else if(e.target.closest(".product-drawer-add-cart")){
-        const btn = e.target.closest(".product-drawer-add-cart");
-        if(!btn) return;
-        const idProdut = btn.closest(".product-drawer-content").id;
-        if(!idProdut) return;
-        sistemaDeBarraProducto(idProdut);
-    }
-    if(!e.target.closest("#carrito") && !e.target.closest(".cart-close") 
-        && !e.target.closest(".cart-overlay")) return;
-        verCarrito.carritoArray = carrito.carrito;
-        verCarrito.verCarrito();
-        verCarrito.calcularTotal();
+    verCarrito.carritoArray = carrito.carrito;
+    verCarrito.calcularTotal();
+    verCarrito.rederizadoCarrito();
+    carrito.iconoDecarito();
+
+    return;
+  } else if (e.target.closest(".product-drawer-add-cart")) {
+    const btn = e.target.closest(".product-drawer-add-cart");
+    if (!btn) return;
+    const idProdut = btn.closest(".product-drawer-content").id;
+    if (!idProdut) return;
+    sistemaDeBarraProducto(idProdut);
+    return;
+  }
+  if (e.target.closest(".checkout-btn")) {
+    verCarrito.irAlCheckout();
+    return;
+  }
+  if (
+    !e.target.closest("#carrito") &&
+    !e.target.closest(".cart-close") &&
+    !e.target.closest(".cart-overlay")
+  )
+    return;
+  verCarrito.carritoArray = carrito.carrito;
+  verCarrito.verCarrito();
+  verCarrito.calcularTotal();
 });
